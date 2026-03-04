@@ -8,7 +8,7 @@
  * \date   19 February 2026
  * \version 0.1.0
  *
- * \brief  Contains GPIO-LEDS Examples for TM4C123GH6PZ chip
+ * \brief  Contains GPIO Examples for TM4C123GH6PZ chip
  *
  * Module: Simple examples
  *
@@ -19,8 +19,19 @@
  * ---------------------------------------------------------------------------
  */
 
-#ifndef GPIO_LEDS_H_
-#define GPIO_LEDS_H_
+#ifndef EXAMPLE_GPIO_H_
+#define EXAMPLE_GPIO_H_
+
+//*****************************************************************************
+//
+// If building with a C++ compiler, make all of the definitions in this header
+// have a C binding.
+//
+//*****************************************************************************
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 #include <stdint.h>
 #include <stdio.h>
@@ -37,9 +48,19 @@
 
 #define DELAY_CYCLE  (100000)
 
-// Main example function
+// Main example functions
 int example_gpio_leds(void);
 
 
 
-#endif /* GPIO_LEDS_H_ */
+//*****************************************************************************
+//
+// Mark the end of the C bindings section for C++ compilers.
+//
+//*****************************************************************************
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif /* EXAMPLE_GPIO_H_ */

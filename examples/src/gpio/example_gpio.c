@@ -8,7 +8,7 @@
  * \date   19 February 2026
  * \version 0.1.0
  *
- * \brief  Contains GPIO-LEDS Examples for TM4C123GH6PZ chip
+ * \brief  Contains GPIO Examples for TM4C123GH6PZ chip
  *
  * Module: Simple examples
  *
@@ -19,7 +19,7 @@
  * ---------------------------------------------------------------------------
  */
 
-#include "gpio_leds.h"
+#include "example_gpio.h"
 
 int example_gpio_leds(void) {
 
