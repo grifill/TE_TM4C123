@@ -3,16 +3,16 @@
  * Copyright (c) 2026 Gregory Filatov
  * All rights reserved.
  *
- * \file   gpio_leds.h
+ * \file   example_gpio.h
  * \author Gregory Filatov
  * \date   19 February 2026
  * \version 0.1.0
  *
- * \brief  Contains GPIO-LEDS Example for TM4C123GH6PZ chip
+ * \brief  Contains GPIO-LEDS Examples for TM4C123GH6PZ chip
  *
- * Module: Simple example
+ * Module: Simple examples
  *
- * Purpose: Example, education
+ * Purpose: Examples, education
  *
  * Functionality:
  *     Environment
