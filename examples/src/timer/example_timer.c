@@ -56,30 +56,3 @@ int example_timer_leds(void) {
 
     //return 0;
 }
-
-/*
-void SysTick_Handler(void);
-
-int main()
-{
-    SYSCTL->RCGCGPIO |= (1U << 5);  // enable clock for GPIOF
-    GPIOF->DEN |= LED_RED; // enable digital function on pin 1
-    GPIOF->DIR |= LED_RED; // set pin 1 as output
-
-    SysTick->LOAD = 16000000 - 1; // set reload value for 1 second delay
-    SysTick->VAL = 0; // clear the current value and the COUNT flag
-    SysTick->CTRL = (1U << 2) | (1U << 1) | 1U; // enable systick timer with system clock and interrupt
-
-    __enable_irq(); // enable global interrupts
-
-    while(1)
-    {
-        // do nothing
-    }
-}
-
-void SysTick_Handler(void)
-{
-    GPIOF->DATA ^= LED_RED; // toggle LED pin
-}
-*/
