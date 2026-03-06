@@ -3,12 +3,12 @@
  * Copyright (c) 2026 Gregory Filatov
  * All rights reserved.
  *
- * \file   uart_hello.c
+ * \file   example_uart.c
  * \author Gregory Filatov
  * \date   19 February 2026
  * \version 0.1.0
  *
- * \brief  Contains UART-Hello Example for TM4C123GH6PZ chip
+ * \brief  Contains UART Examples for TM4C123GH6PZ chip
  *
  * Module: Simple example
  *
