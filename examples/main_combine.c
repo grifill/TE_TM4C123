@@ -23,13 +23,14 @@
 #include <stdbool.h>
 
 // Examples - List
-#include "gpio_leds.h"
-#include "timer_leds.h"
-#include "uart_hello.h"
+#include "example_gpio.h"
+#include "example_systick.h"
+#include "example_timer.h"
+#include "example_uart.h"
 
 int main(void) {
 
-    example_timer_leds();
+    //example_timer_leds();
     //example_gpio_leds();
     //example_uart_hello();
 
