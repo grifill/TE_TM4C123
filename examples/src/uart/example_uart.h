@@ -3,24 +3,35 @@
  * Copyright (c) 2026 Gregory Filatov
  * All rights reserved.
  *
- * \file   uart_hello.h
+ * \file   example_uart.h
  * \author Gregory Filatov
  * \date   19 February 2026
  * \version 0.1.0
  *
- * \brief  Contains UART-Hello Example for TM4C123GH6PZ chip
+ * \brief  Contains UART Examples for TM4C123GH6PZ chip
  *
- * Module: Simple example
+ * Module: Simple examples
  *
- * Purpose: Example, education
+ * Purpose: Examples, education
  *
  * Functionality:
  *     Environment
  * ---------------------------------------------------------------------------
  */
 
-#ifndef UART_HELLO_H_
-#define UART_HELLO_H_
+#ifndef EXAMPLE_UART_H_
+#define EXAMPLE_UART_H_
+
+//*****************************************************************************
+//
+// If building with a C++ compiler, make all of the definitions in this header
+// have a C binding.
+//
+//*****************************************************************************
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 #include <stdint.h>
 #include <stdio.h>
@@ -36,11 +47,18 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
 
-// Main example function
+// Main examples function
 int example_uart_hello(void);
 
 
 
+//*****************************************************************************
+//
+// Mark the end of the C bindings section for C++ compilers.
+//
+//*****************************************************************************
+#ifdef __cplusplus
+}
+#endif
 
-
-#endif /* UART_HELLO_H_ */
+#endif /* EXAMPLE_UART_H_ */

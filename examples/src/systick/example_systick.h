@@ -47,7 +47,7 @@ extern "C"
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
 
-// Main example functions
+// Main examples functions
 int example_systick_delay(void);
 
 

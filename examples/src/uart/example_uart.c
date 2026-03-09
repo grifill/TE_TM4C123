@@ -10,16 +10,16 @@
  *
  * \brief  Contains UART Examples for TM4C123GH6PZ chip
  *
- * Module: Simple example
+ * Module: Simple examples
  *
- * Purpose: Example, education
+ * Purpose: Examples, education
  *
  * Functionality:
  *     Environment
  * ---------------------------------------------------------------------------
  */
 
-#include "uart_hello.h"
+#include "example_uart.h"
 
 static void UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count) {
     while(ui32Count--) {
@@ -51,8 +51,5 @@ int example_uart_hello(void) {
     // Prompt for text to be entered
     UARTSend("\r\n Hello TE-TM4C123 \n", 21);
 
-    while(1) {
-    }
-
-    //return 0;
+    return 0;
 }
