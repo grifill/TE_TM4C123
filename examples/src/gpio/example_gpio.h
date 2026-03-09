@@ -47,7 +47,7 @@ extern "C"
 #include "driverlib/sysctl.h"
 
 #define DELAY_CYCLE  (100000)
-#define WORK_CYCLE   (512)
+#define WORK_CYCLE   (32)
 
 // Main examples functions
 int example_gpio_leds(void);
