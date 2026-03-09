@@ -30,9 +30,7 @@
 
 int main(void) {
 
-    //example_timer_leds();
-    //example_gpio_leds();
-    //example_uart_hello();
+    example_gpio_leds();
 
     while(1) {
     }
@@ -45,7 +43,6 @@ int main(void) {
 //*****************************************************************************
 #ifdef DEBUG
 void
-__error__(char *pcFilename, uint32_t ui32Line)
-{
+__error__(char *pcFilename, uint32_t ui32Line) {
 }
 #endif

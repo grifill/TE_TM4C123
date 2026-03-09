@@ -47,7 +47,7 @@ int example_gpio_leds(void) {
     GPIOPinTypeGPIOOutput(GPIO_PORTG_BASE, GPIO_PIN_6);
     GPIOPinTypeGPIOOutput(GPIO_PORTG_BASE, GPIO_PIN_7);
 
-    while(1) {
+    for(i = 0; i < WORK_CYCLE; i++) {
 
         // Led1 On, other Off
         GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_3, GPIO_PIN_3);
@@ -76,8 +76,7 @@ int example_gpio_leds(void) {
         GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_6, 0);
         GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_7, GPIO_PIN_7);
         for(i = 0; i < DELAY_CYCLE; i++) {}
-
     }
 
-    //return 0;
+    return 0;
 }
