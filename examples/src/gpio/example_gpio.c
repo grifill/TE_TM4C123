@@ -23,6 +23,7 @@
 
 int example_gpio_leds(void) {
 
+    volatile uint32_t w = 0;
     volatile uint32_t i = 0;
 
     // Set the clocking to run directly from the crystal
@@ -47,7 +48,7 @@ int example_gpio_leds(void) {
     GPIOPinTypeGPIOOutput(GPIO_PORTG_BASE, GPIO_PIN_6);
     GPIOPinTypeGPIOOutput(GPIO_PORTG_BASE, GPIO_PIN_7);
 
-    for(i = 0; i < WORK_CYCLE; i++) {
+    for(w = 0; w < WORK_CYCLE; w++) {
 
         // Led1 On, other Off
         GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_3, GPIO_PIN_3);
