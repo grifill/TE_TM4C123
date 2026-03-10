@@ -21,7 +21,7 @@
 
 #include "example_gpio.h"
 
-int example_gpio_leds(void) {
+int example_gpio_leds(uint32_t wCycle) {
 
     volatile uint32_t w = 0;
     volatile uint32_t i = 0;
@@ -48,7 +48,7 @@ int example_gpio_leds(void) {
     GPIOPinTypeGPIOOutput(GPIO_PORTG_BASE, GPIO_PIN_6);
     GPIOPinTypeGPIOOutput(GPIO_PORTG_BASE, GPIO_PIN_7);
 
-    for(w = 0; w < WORK_CYCLE; w++) {
+    for(w = 0; w < wCycle; w++) {
 
         // Led1 On, other Off
         GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_3, GPIO_PIN_3);

@@ -33,6 +33,7 @@ extern "C"
 {
 #endif
 
+/* --------------------------------- Includes ---------------------------------------- */
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -46,11 +47,21 @@ extern "C"
 #include "driverlib/rom_map.h"
 #include "driverlib/sysctl.h"
 
-#define DELAY_CYCLE  (100000)
-#define WORK_CYCLE   (32)
+/* ---------------------------------- Defines ---------------------------------------- */
 
-// Main examples functions
-int example_gpio_leds(void);
+#define DELAY_CYCLE  (100000)
+
+/* ---------------------- Main examples functions prototypes ------------------------- */
+
+///
+/// \brief   example_gpio_leds
+/// \details Example: GPIO pins output function (LED)
+///
+/// \param[in] wCycle Is number of iterations
+///
+/// \return '0' - default retval for examples
+///
+int example_gpio_leds(uint32_t wCycle);
 
 
 
