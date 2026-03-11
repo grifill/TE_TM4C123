@@ -21,7 +21,7 @@
 
 #include "example_uart.h"
 
-static void UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count) {
+static void UARTSendBuf(const uint8_t *pui8Buffer, uint32_t ui32Count) {
     while(ui32Count--) {
         MAP_UARTCharPut(UART0_BASE, *pui8Buffer++);
     }
@@ -49,7 +49,7 @@ int example_uart_hello(void) {
                             (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
 
     // Prompt for text to be entered
-    UARTSend("\r\n Hello TE-TM4C123 \n", 21);
+    UARTSendBuf("\r\n Hello TE-TM4C123 \n", 21);
 
     return 0;
 }
