@@ -33,6 +33,7 @@ extern "C"
 {
 #endif
 
+/* --------------------------------- Includes ---------------------------------------- */
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -47,7 +48,9 @@ extern "C"
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
 
-// Main examples functions
+/* ---------------------------------- Defines ---------------------------------------- */
+/* ---------------------- Main examples functions prototypes ------------------------- */
+
 int example_systick_delay(void);
 
 
