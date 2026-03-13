@@ -38,7 +38,6 @@ int example_gpio_leds(uint32_t wCycle) {
 
     // Check if the peripheral access is enabled
     while (!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOG)) {
-
     }
 
     // Enable the GPIO pin for the LED (PG3),

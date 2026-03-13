@@ -46,6 +46,7 @@ extern "C"
 #include "driverlib/rom.h"
 #include "driverlib/rom_map.h"
 #include "driverlib/sysctl.h"
+#include "driverlib/systick.h"
 #include "driverlib/uart.h"
 
 /* ---------------------------------- Defines ---------------------------------------- */
