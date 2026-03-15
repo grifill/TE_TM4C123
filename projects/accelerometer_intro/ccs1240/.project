@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>main_combine</name>
+	<name>accelerometer_intro</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -26,39 +26,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>LIBRARY_TIVA_LOC</name>
-			<type>2</type>
-			<locationURI>LIBRARY_TIVA_LOC</locationURI>
-		</link>
-		<link>
-			<name>LIBRARY_USER_LOC</name>
-			<type>2</type>
-			<locationURI>LIBRARY_USER_LOC</locationURI>
-		</link>
-		<link>
-			<name>gpio</name>
-			<type>2</type>
-			<locationURI>SRC_EXAMPLES_LOC/gpio</locationURI>
-		</link>
-		<link>
-			<name>main_combine.c</name>
+			<name>main_accel.c</name>
 			<type>1</type>
-			<locationURI>SRC_MAIN_LOC/main_combine.c</locationURI>
-		</link>
-		<link>
-			<name>systick</name>
-			<type>2</type>
-			<locationURI>SRC_EXAMPLES_LOC/systick</locationURI>
-		</link>
-		<link>
-			<name>timer</name>
-			<type>2</type>
-			<locationURI>SRC_EXAMPLES_LOC/timer</locationURI>
-		</link>
-		<link>
-			<name>uart</name>
-			<type>2</type>
-			<locationURI>SRC_EXAMPLES_LOC/uart</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/main_accel.c</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

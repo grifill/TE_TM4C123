@@ -3,16 +3,16 @@
  * Copyright (c) 2026 Gregory Filatov
  * All rights reserved.
  *
- * \file   main_combine.c
+ * \file   main_accel.c
  * \author Gregory Filatov
- * \date   19 February 2026
+ * \date   15 March 2026
  * \version 0.1.0
  *
- * \brief  Contains main (combine) function (examples TM4C123GH6PZ chip)
+ * \brief  Contains main (accelerometer_intro) function (projects TM4C123GH6PZ chip)
  *
- * Module: Combine function
+ * Module: Main accelerometer_intro function
  *
- * Purpose: Example, education
+ * Purpose: Project, education
  *
  * Functionality:
  *     Environment
@@ -22,18 +22,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// Examples - List
-#include "example_gpio.h"
-#include "example_systick.h"
-#include "example_timer.h"
-#include "example_uart.h"
-
 int main(void) {
-
-    int err = 0;
-
-    err += example_gpio_leds(16);
-    err += example_uart_hello();
 
     while(1) {
     }
