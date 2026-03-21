@@ -5,7 +5,7 @@
  *
  * \file   main_accel.c
  * \author Gregory Filatov
- * \date   22 March 2026
+ * \date   15 March 2026
  * \version 0.1.0
  *
  * \brief  Contains main (accelerometer_intro) function (projects TM4C123GH6PZ chip)
