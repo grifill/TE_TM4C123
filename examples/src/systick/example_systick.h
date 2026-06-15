@@ -52,7 +52,7 @@ extern "C"
 /* ---------------------------------- Defines ---------------------------------------- */
 /* ---------------------- Main examples functions prototypes ------------------------- */
 
-int example_systick_delay(void);
+int example_systick_delay(uint32_t cycles);
 
 
 //*****************************************************************************

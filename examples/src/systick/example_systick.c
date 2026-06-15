@@ -36,7 +36,7 @@ void delay_ms(uint32_t ms) {
     }
 }
 
-int example_systick_delay(void) {
+int example_systick_delay(uint32_t cycles) {
 
     msTicks = 0;
 
@@ -70,11 +70,12 @@ int example_systick_delay(void) {
     // Start SysTick
     SysTickEnable();
 
-    while(1) {
+    while(cycles) {
         GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_7, GPIO_PIN_7);
         delay_ms(1000);
         GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_7, 0);
         delay_ms(1000);
+        cycles--;
     }
 
     return 0;
