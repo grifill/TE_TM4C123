@@ -21,7 +21,7 @@
 
 #include "example_uart.h"
 
-static void UARTSendBuf(const uint8_t *pui8Buffer, uint32_t ui32Count) {
+void UARTSendBuf(const uint8_t *pui8Buffer, uint32_t ui32Count) {
     while(ui32Count--) {
         MAP_UARTCharPut(UART0_BASE, *pui8Buffer++);
     }

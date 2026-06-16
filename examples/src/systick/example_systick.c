@@ -29,7 +29,7 @@ void SysTick_Handler(void) {
     msTicks++;
 }
 
-void delay_ms(uint32_t ms) {
+static void delay_ms(uint32_t ms) {
 
     uint32_t start = msTicks;
     while ((msTicks - start) < ms) {

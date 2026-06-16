@@ -60,7 +60,7 @@ extern "C"
 ///
 /// \return None
 ///
-static void UARTSendBuf(const uint8_t *pui8Buffer, uint32_t ui32Count);
+void UARTSendBuf(const uint8_t *pui8Buffer, uint32_t ui32Count);
 
 ///
 /// \brief   example_uart_hello
