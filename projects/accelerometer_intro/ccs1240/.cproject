@@ -43,18 +43,12 @@
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_20.2.compilerID.LITTLE_ENDIAN.1695903301" name="Little endian code [See 'General' page to edit] (--little_endian, -me)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_20.2.compilerID.LITTLE_ENDIAN" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.TMS470_20.2.compilerID.INCLUDE_PATH.1493532050" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_20.2.compilerID.INCLUDE_PATH" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="${SRC_EXAMPLES_LOC}/gpio"/>
-									<listOptionValue builtIn="false" value="${SRC_EXAMPLES_LOC}/uart"/>
-									<listOptionValue builtIn="false" value="${SRC_EXAMPLES_LOC}/timer"/>
-									<listOptionValue builtIn="false" value="${SRC_EXAMPLES_LOC}/systick"/>
 									<listOptionValue builtIn="false" value="${PROJECT_ROOT}"/>
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
 									<listOptionValue builtIn="false" value="${LIBRARY_TIVA_LOC}"/>
 									<listOptionValue builtIn="false" value="${LIBRARY_TIVA_LOC}/driverlib"/>
 									<listOptionValue builtIn="false" value="${LIBRARY_TIVA_LOC}/inc"/>
 									<listOptionValue builtIn="false" value="${LIBRARY_USER_LOC}"/>
-									<listOptionValue builtIn="false" value="${SRC_EXAMPLES_LOC}"/>
-									<listOptionValue builtIn="false" value="${SRC_MAIN_LOC}"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_20.2.compilerID.DEBUGGING_MODEL.62319932" name="Debugging model" superClass="com.ti.ccstudio.buildDefinitions.TMS470_20.2.compilerID.DEBUGGING_MODEL" useByScannerDiscovery="false" value="com.ti.ccstudio.buildDefinitions.TMS470_20.2.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.TMS470_20.2.compilerID.DIAG_WARNING.697581936" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_20.2.compilerID.DIAG_WARNING" useByScannerDiscovery="false" valueType="stringList">
