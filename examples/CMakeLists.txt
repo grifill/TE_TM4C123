@@ -1,74 +1,93 @@
-cmake_minimum_required(VERSION 3.14)
-project(example)
+cmake_minimum_required(VERSION 3.16)
 
-# Specify build type
-if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE "Release")
-endif()
+# set(CMAKE_VERBOSE_MAKEFILE ON)
 
-set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Select build type")
-set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "RelWithDebInfo" "MinSizeRel")
+# Path to toolchain file. This one has to be before 'project()' below
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/arm-none-eabi-gcc.cmake)
+# Generate compile_commands.json for vscode
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
-# Path to the TivaWare C SDK folder
-option(TIVA_WARE_C_PATH "Path to TivaWare C Series SDK folder")
-if(NOT TIVA_WARE_C_PATH)
-  message(FATAL_ERROR "You must specify TIVA_WARE_C_PATH variable!")
-endif()
+# Setup project, output, and linker files
+project(Test)
+set(EXECUTABLE ${PROJECT_NAME}.elf)
+set(LINKER_FILE ${CMAKE_SOURCE_DIR}/TM4C123GH6.ld)
+set(TIVAWARE_DIR ${CMAKE_SOURCE_DIR}/libraries/TivaWare)
 
-# Project source files
-file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_LIST_DIR}/src/*.cpp ${CMAKE_CURRENT_LIST_DIR}/src/*.c)
-file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_LIST_DIR}/src/*.h)
-set(LINKER_SCRIPT ${CMAKE_CURRENT_LIST_DIR}/blinky.ld)
+enable_language(C ASM)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
 
-# Add the project
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
-
-# Include the TivaWare C SDK
-target_include_directories(${PROJECT_NAME} PUBLIC ${TIVA_WARE_C_PATH})
-
-# Platform specific flags
-target_compile_options(${PROJECT_NAME} PRIVATE 
-  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 
-  -mfloat-abi=hard -ffunction-sections -fdata-sections
-  -Wall -pedantic -MD -fno-exceptions -fno-rtti
+set(APP_SRC
+    main_combine.c
 )
 
-# Platform specific definitions
-target_compile_definitions(${PROJECT_NAME} PRIVATE
-  -DPART_TM4C1294NCPDT
+add_executable(${EXECUTABLE} ${APP_SRC})
+
+# List of include directories
+target_include_directories(${EXECUTABLE} PRIVATE
+    inc
+    ${TIVAWARE_DIR}
 )
 
-# Find the compiler specific libraries
-get_target_property(COMPILE_FLAGS ${PROJECT_NAME} COMPILE_OPTIONS)
-execute_process(COMMAND ${CMAKE_C_COMPILER} ${COMPILE_FLAGS} -print-libgcc-file-name OUTPUT_VARIABLE LIBGCC_PATH)
-execute_process(COMMAND ${CMAKE_C_COMPILER} ${COMPILE_FLAGS} -print-file-name=libc.a OUTPUT_VARIABLE LIBC_PATH)
-execute_process(COMMAND ${CMAKE_C_COMPILER} ${COMPILE_FLAGS} -print-file-name=libm.a OUTPUT_VARIABLE LIBM_PATH)
-execute_process(COMMAND ${CMAKE_C_COMPILER} ${COMPILE_FLAGS} -print-file-name=libstdc++.a OUTPUT_VARIABLE LIBSTDCPP_PATH)
-string(STRIP "${LIBGCC_PATH}" LIBGCC_PATH)
-string(STRIP "${LIBSTDCPP_PATH}" LIBSTDCPP_PATH)
-string(STRIP "${LIBC_PATH}" LIBC_PATH)
-string(STRIP "${LIBM_PATH}" LIBM_PATH)
-
-# Platform specific link definitions
-target_link_options(${PROJECT_NAME} PRIVATE
-  -T ${LINKER_SCRIPT} --entry ResetISR --gc-sections
+# List of compiler defines, prefix with -D compiler option
+target_compile_definitions(${EXECUTABLE} PRIVATE
+    -DPART_TM4C123GH6PM
+    -DTARGET_IS_TM4C123_RB1
 )
 
-# Include other libraries
-target_link_libraries(${PROJECT_NAME} PUBLIC
-  ${TIVA_WARE_C_PATH}/driverlib/gcc/libdriver.a
-  ${LIBM_PATH}
-  ${LIBC_PATH}
-  ${LIBGCC_PATH}
-  ${LIBSTDCPP_PATH}
+target_link_libraries(${EXECUTABLE} PUBLIC
+    c
+    m
+    rdimon
+    gcc
 )
 
-# Objcopy to create a binary file
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND 
-  ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${PROJECT_NAME}>.axf 
-  ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.bin
+# Compiler options
+target_compile_options(${EXECUTABLE} PRIVATE
+    -mcpu=cortex-m4
+    -mthumb
+    -mfpu=fpv4-sp-d16
+    -mfloat-abi=hard
+    # Optimizations
+    -ffunction-sections
+    -fdata-sections
+    -O0
+    -g3
+    # Compile warnings
+    -Wall
+    -Werror
+    -Wextra
+    -Wpedantic
 )
 
-# Enable C++14 and C11
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
-set_property(TARGET ${PROJECT_NAME} PROPERTY C_STANDARD 11)
+# Linker options
+target_link_options(${EXECUTABLE} PRIVATE
+    -T${LINKER_FILE}
+    -mcpu=cortex-m4
+    -mthumb
+    -mfpu=fpv4-sp-d16
+    -mfloat-abi=hard
+    -specs=rdimon.specs
+    -Wl,--entry=ResetISR
+    -Wl,-Map=${PROJECT_NAME}.map,--cref
+    -Wl,--gc-sections
+    -Wl,-print-memory-usage
+)
+
+# Print executable size as part of the post build process
+add_custom_command(TARGET ${EXECUTABLE}
+    POST_BUILD
+    COMMAND ${CMAKE_SIZE_UTIL} ${EXECUTABLE}
+)
+
+# Create hex, bin and S-Record files after the build
+set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
+set(S19_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.s19)
+set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
+add_custom_command(TARGET ${EXECUTABLE} POST_BUILD
+    COMMAND ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${EXECUTABLE}> ${BIN_FILE}
+    # COMMAND ${CMAKE_OBJCOPY} -O srec --srec-len=64 $<TARGET_FILE:${EXECUTABLE}> ${S19_FILE}
+    # COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${EXECUTABLE}> ${HEX_FILE}
+    COMMENT "Building ${BIN_FILE}"
+)
