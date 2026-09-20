@@ -32,7 +32,7 @@ int main(void) {
 
     int err = 0;
 
-    //err += example_gpio_leds(16);
+    err += example_gpio_leds(16);
     //err += example_uart_hello();
     err += example_systick_delay(16);
 
