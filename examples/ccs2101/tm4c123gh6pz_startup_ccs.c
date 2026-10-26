@@ -64,15 +64,15 @@ extern uint32_t __STACK_TOP;
 //
 //*****************************************************************************
 #if defined(__clang__)
-// Синтаксис для нового компилятора TI Arm Clang
+// TI Arm Clang syntax
 static uint32_t pui32Stack[128] __attribute__((section(".stack"))) __attribute__((unused));
 #elif defined(__TI_COMPILER_VERSION__)
-// Синтаксис для старого компилятора TI Compiler
+// TI Compiler syntax
 #pragma DATA_SECTION(pui32Stack, ".stack")
 static uint32_t pui32Stack[128];
 #else
-// Универсальный синтаксис GCC/иных компиляторов
-static uint32_t pui32Stack[128] __attribute__((section(".stack")));
+// GCC syntax
+static uint32_t pui32Stack[128] __attribute__((section(".stack"))) __attribute__((unused));
 #endif
 void (* const g_pfnVectors[])(void) =
 {
