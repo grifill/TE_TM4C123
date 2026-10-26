@@ -10,8 +10,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 # Setup project, output, and linker files
 project(Test)
 set(EXECUTABLE ${PROJECT_NAME}.elf)
-set(LINKER_FILE ${CMAKE_SOURCE_DIR}/TM4C123GH6.ld)
-set(TIVAWARE_DIR ${CMAKE_SOURCE_DIR}/libraries/TivaWare)
+set(LINKER_FILE ${CMAKE_SOURCE_DIR}/tm4c123gh6pm.ld)
+
+# Repo dir
+cmake_path(GET CMAKE_SOURCE_DIR PARENT_PATH REPO_DIR)
+message(STATUS "Родительская директория корня: ${REPO_DIR}")
 
 enable_language(C ASM)
 set(CMAKE_C_STANDARD 99)
@@ -20,14 +23,14 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 set(APP_SRC
     main_combine.c
+    tm4c123gh6pz_startup.c
 )
 
 add_executable(${EXECUTABLE} ${APP_SRC})
 
 # List of include directories
 target_include_directories(${EXECUTABLE} PRIVATE
-    inc
-    ${TIVAWARE_DIR}
+    ${REPO_DIR}/libs/TivaC_Libs
 )
 
 # List of compiler defines, prefix with -D compiler option
