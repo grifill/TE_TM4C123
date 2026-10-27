@@ -13,8 +13,8 @@ set(EXECUTABLE ${PROJECT_NAME}.elf)
 set(LINKER_FILE ${CMAKE_SOURCE_DIR}/tm4c123gh6pm.ld)
 
 # Repo dir
-cmake_path(GET CMAKE_SOURCE_DIR PARENT_PATH REPO_DIR)
-message(STATUS "Родительская директория корня: ${REPO_DIR}")
+get_filename_component(REPO_DIR "${CMAKE_CURRENT_SOURCE_DIR}/.." ABSOLUTE)
+message(STATUS "Parent dir is: ${REPO_DIR}")
 
 enable_language(C ASM)
 set(CMAKE_C_STANDARD 99)
