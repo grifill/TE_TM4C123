@@ -35,7 +35,7 @@ target_include_directories(${EXECUTABLE} PRIVATE
 
 # List of compiler defines, prefix with -D compiler option
 target_compile_definitions(${EXECUTABLE} PRIVATE
-    -DPART_TM4C123GH6PM
+    -DPART_TM4C123GH6PZ
     -DTARGET_IS_TM4C123_RB1
 )
 

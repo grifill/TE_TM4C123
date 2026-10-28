@@ -23,16 +23,16 @@
 #include <stdbool.h>
 
 // Examples - List
-//#include "example_gpio.h"
-//#include "example_systick.h"
-//#include "example_timer.h"
-//#include "example_uart.h"
+#include "example_gpio.h"
+#include "example_systick.h"
+#include "example_timer.h"
+#include "example_uart.h"
 
 int main(void) {
 
-    //int err = 0;
+    int err = 0;
 
-    //err += example_gpio_leds(16);
+    err += example_gpio_leds(16);
     //err += example_uart_hello();
     //err += example_systick_delay(16);
 
