@@ -8,9 +8,9 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/arm-none-eabi-gcc.cmake)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
 # Setup project, output, and linker files
-project(Test)
+project(main_combine)
 set(EXECUTABLE ${PROJECT_NAME}.elf)
-set(LINKER_FILE ${CMAKE_SOURCE_DIR}/tm4c123gh6pm.ld)
+set(LINKER_FILE ${CMAKE_SOURCE_DIR}/tm4c123gh6pz.ld)
 
 # Repo dir
 get_filename_component(REPO_DIR "${CMAKE_CURRENT_SOURCE_DIR}/.." ABSOLUTE)
@@ -31,6 +31,11 @@ add_executable(${EXECUTABLE} ${APP_SRC})
 # List of include directories
 target_include_directories(${EXECUTABLE} PRIVATE
     ${REPO_DIR}/libs/TivaC_Libs
+    ${REPO_DIR}/libs/User_Libs
+    ${REPO_DIR}/examples/src/gpio
+    ${REPO_DIR}/examples/src/systick
+    ${REPO_DIR}/examples/src/timer
+    ${REPO_DIR}/examples/src/uart
 )
 
 # List of compiler defines, prefix with -D compiler option
