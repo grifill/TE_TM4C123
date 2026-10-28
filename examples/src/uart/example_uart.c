@@ -49,7 +49,7 @@ int example_uart_hello(void) {
                             (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
 
     // Prompt for text to be entered
-    UARTSendBuf("\r\n Hello TE-TM4C123 \n", 21);
+    UARTSendBuf((uint8_t*)"\r\n Hello TE-TM4C123 \n", 21);
 
     return 0;
 }

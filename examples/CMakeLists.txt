@@ -21,9 +21,17 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
+# sources directories
+file(GLOB_RECURSE SOURCES_FILES CONFIGURE_DEPENDS 
+    "${REPO_DIR}/libs/TivaC_Libs/*.c"
+    "${REPO_DIR}/libs/User_Libs/*.c"
+    "${REPO_DIR}/examples/src/*.c"
+)
+
 set(APP_SRC
     main_combine.c
     tm4c123gh6pz_startup.c
+    ${SOURCES_FILES}
 )
 
 add_executable(${EXECUTABLE} ${APP_SRC})
@@ -65,6 +73,8 @@ target_compile_options(${EXECUTABLE} PRIVATE
     # Compile warnings
     -Wall
     -Werror
+    -Wno-error=unused-parameter
+    -Wno-error=shift-negative-value
     -Wextra
     -Wpedantic
 )
