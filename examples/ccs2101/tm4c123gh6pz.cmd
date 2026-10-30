@@ -34,7 +34,7 @@ SECTIONS
     .cinit  :   > FLASH
     .pinit  :   > FLASH
     .init_array : > FLASH
-    .rodata     : > FLASH
+    .rodata : > FLASH
 
     .vtable :   > 0x20000000
     .data   :   > SRAM
@@ -44,3 +44,6 @@ SECTIONS
 }
 
 __STACK_TOP = __stack + 512;
+
+// for clang
+--stack_size=0x800
